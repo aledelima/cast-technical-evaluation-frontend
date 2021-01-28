@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component'
 import { HomeComponent } from './views/home/home.component';
+import { CourseListComponent } from './components/course/course-list/course-list.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,6 +18,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    CourseListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatListModule,
     MatSidenavModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
