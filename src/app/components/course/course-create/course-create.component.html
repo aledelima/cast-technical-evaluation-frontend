@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-title>Novo Curso</mat-card-title>
+    <form [formGroup]="formGroup">
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Nome do Curso</mat-label>
+        <input matInput placeholder="Nome do curso" formControlName="description">
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Data de Início</mat-label>
+        <input matInput placeholder="Início das aulas" formControlName="begin">
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Data de Término</mat-label>
+        <input matInput placeholder="Término das aulas" formControlName="end">
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Nº de Alunos</mat-label>
+        <input matInput placeholder="Número de alunos na turma" formControlName="studentsQtd">
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Categoria</mat-label>
+        <select matNativeControl formControlName="categoryId">
+          <option *ngFor="let category of categories; first as f" [value]="category.id"
+                  [selected]="f">{{ category.description }}</option>
+        </select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="create()">
+            Salvar
+          </button>
+      </mat-card-actions>
+    </form> 
+  </mat-card>
+
