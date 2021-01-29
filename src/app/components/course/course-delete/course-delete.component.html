@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-title>Confirmação de Exclusão</mat-card-title>
+    <form>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" name="id" [ngModel]="course.id" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Nome do Curso</mat-label>
+        <input matInput placeholder="Nome do curso" name="description" [ngModel]="course.description" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Data de Início</mat-label>
+        <input matInput placeholder="Início das aulas" name="begin" [ngModel]="course.begin" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Data de Término</mat-label>
+        <input matInput placeholder="Término das aulas" name="end" [ngModel]="course.end" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Nº de Alunos</mat-label>
+        <input matInput placeholder="Número de alunos na turma" name="studentsQtd" [ngModel]="course.studentsQtd" disabled>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Categoria</mat-label>
+        <select matNativeControl name="categoryId" [ngModel]="course.categoryId" disabled>
+          <option [value]="course.categoryId">{{ course.categoryDescription }}</option>
+        </select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="delete()">
+          Excluir
+        </button>
+      </mat-card-actions>
+    </form> 
+  </mat-card>
