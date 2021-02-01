@@ -10,3 +10,7 @@ table {
 .delete > i {
     color: #e35e6b;
 }
+
+.card {
+    margin-bottom: 10px;
+}

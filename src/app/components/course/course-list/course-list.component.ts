@@ -10,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class CourseListComponent implements OnInit {
 
   courses: CourseDto[];
-  displayedColumns = ['id', 'description', 'begin', 'end', 'actions'];
+  displayedColumns = [
+    'id', 
+    'description', 
+    'begin', 
+    'end', 
+    'studentsQtd', 
+    'categoryDescription', 
+    'actions'
+  ];
 
   constructor(private service: CourseService) { }
 

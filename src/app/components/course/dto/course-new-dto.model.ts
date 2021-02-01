@@ -1,5 +1,5 @@
 export interface CourseNewDto {
-    id?: number
+    id?: string
     description: string
     begin: string
     end: string

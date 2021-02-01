@@ -17,11 +17,11 @@ export class CourseCreateComponent implements OnInit {
   formGroup: FormGroup;
   categories: CategoryDto[];
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private courseService: CourseService, 
     private categoryService: CategoryService,
     private formBuilder: FormBuilder) { 
-
       this.formGroup = this.formBuilder.group({
         description: ['', [Validators.required]],
         begin: ['', [Validators.required]],
@@ -36,13 +36,12 @@ export class CourseCreateComponent implements OnInit {
       this.categories = categories;
       this.formGroup.controls.categoryId.setValue(this.categories[0].id);
     });
-
   }
 
   create():  void {
     this.courseService.create(this.formGroup.value).subscribe(courseDto => {
       this.courseService.showMessage("Curso cadastrado com sucesso!");
-      this.router.navigate(['/list']);
+      this.router.navigate(['/courses']);
     },
     error => {
       this.courseService.showMessage("Erro ao cadastrar. Verifique os dados inseridos!");

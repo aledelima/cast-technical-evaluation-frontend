@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-title>Edição de Curso</mat-card-title>
+  <form [formGroup]="formGroup">
+    <input hidden="true"  matInput class="form-control" formControlName="id">
+    <mat-form-field appearance="legacy" class="field">
+      <mat-label>Nome do Curso</mat-label>
+      <input matInput placeholder="Nome do curso" formControlName="description">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Data de Início</mat-label>
+      <input matInput [matDatepicker]="pickerBegin" formControlName="begin" name="begin">
+      <mat-datepicker-toggle matSuffix [for]="pickerBegin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerBegin disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Data de Término</mat-label>
+      <input matInput [matDatepicker]="pickerEnd" formControlName="end" name="end">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="field">
+      <mat-label>Nº de Alunos</mat-label>
+      <input matInput placeholder="Número de alunos na turma" formControlName="studentsQtd">
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="field">
+      <mat-label>Categoria</mat-label>
+      <select matNativeControl formControlName="categoryId">
+        <option *ngFor="let category of categories; first as f" [value]="category.id"
+                [selected]="f">{{ category.description }}</option>
+      </select>
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="update()">
+        Atualizar
+      </button>
+      <button mat-raised-button (click)="cancel()">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </form> 
+</mat-card>
+
+*Note que datas passadas ou já ocupadas por outros cursos já cadastrados não serão aceitas para o novo cursos.

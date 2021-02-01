@@ -12,6 +12,8 @@ import { HomeComponent } from './views/home/home.component';
 import { CourseListComponent } from './components/course/course-list/course-list.component';
 import { CourseSearchComponent } from './components/course/course-search/course-search.component';
 import { CourseCreateComponent } from './components/course/course-create/course-create.component';
+import { CourseDeleteComponent } from './components/course/course-delete/course-delete.component';
+import { CourseUpdateComponent } from './components/course/course-update/course-update.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -27,8 +29,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { CourseDeleteComponent } from './components/course/course-delete/course-delete.component';
-import { CourseUpdateComponent } from './components/course/course-update/course-update.component';
+import { MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -61,7 +62,8 @@ import { CourseUpdateComponent } from './components/course/course-update/course-
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [],

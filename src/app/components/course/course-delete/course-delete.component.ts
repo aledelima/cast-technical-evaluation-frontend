@@ -35,8 +35,12 @@ export class CourseDeleteComponent implements OnInit {
   delete() {
     this.courseService.delete(this.course).subscribe(() => {
       this.courseService.showMessage("Curso excluido com sucesso!");
-      this.router.navigate(['/courses'])
+      this.router.navigate(['/courses']);
     })
+  }
+
+  cancel() {
+    this.router.navigate(['/courses'])
   }
 
 }

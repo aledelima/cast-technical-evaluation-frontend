@@ -3,7 +3,8 @@ import { CategoryService } from './../category/category.service';
 import { CourseDto } from './dto/course-dto.model';
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -29,35 +30,60 @@ export class CourseService {
     }
 
   findAll(): Observable<CourseDto[]> {
-    return this.http.get<CourseDto[]>(this.baseUrl);
+    return this.http.get<CourseDto[]>(this.baseUrl).pipe(
+      map((obj) => obj), 
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   findById(id: string): Observable<CourseDto> {
-    return this.http.get<CourseDto>(`${this.baseUrl}/${id}`);
+    return this.http.get<CourseDto>(`${this.baseUrl}/${id}`).pipe(
+      map((obj) => obj), 
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   search(str: string): Observable<CourseDto[]> {
-    return this.http.get<CourseDto[]>(`${this.baseUrl}/search/${str}`);
+    return this.http.get<CourseDto[]>(`${this.baseUrl}/search/${str}`).pipe(
+      map((obj) => obj), 
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   create(courseNewDto: CourseNewDto): Observable<CourseDto> {
-    return this.http.post<CourseDto>(this.baseUrl, courseNewDto);
+    return this.http.post<CourseDto>(this.baseUrl, courseNewDto).pipe(
+      map((obj) => obj), 
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   update(courseNewDto: CourseNewDto): Observable<CourseDto> {
-    return this.http.put<CourseDto>(`${this.baseUrl}/${courseNewDto.id}`, courseNewDto);
+    return this.http.put<CourseDto>(`${this.baseUrl}/${courseNewDto.id}`, courseNewDto).pipe(
+      map((obj) => obj), 
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   delete(course: CourseDto): Observable<CourseDto> {
-    return this.http.delete<CourseDto>(`${this.baseUrl}/${course.id}`);
+    return this.http.delete<CourseDto>(`${this.baseUrl}/${course.id}`).pipe(
+      map((obj) => obj), 
+      catchError(e => this.errorHandler(e))
+    );
   }
 
-  showMessage(msg: string): void {
+  showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: "right",
-      verticalPosition: "top"
+      verticalPosition: "top",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
     })
+  }
+
+  errorHandler(e: any): Observable<any> {
+    console.log(e);
+    this.showMessage('Erro ao salvar! Verifique os campos e datas preenchidas ou se o servidor está inddisponivel.', true);
+    return EMPTY;
   }
 
 }
